@@ -1,0 +1,80 @@
+User stories inkl. acceptkriterier
+
+
+
+US1:
+Som en bruger vil jeg kunne logind, så jeg kan tilgå min profil.
+
+	Acceptkriterier:
+Ved korrekt indtastning af master-password dekrypteres boksen lokalt.
+Ved forkert indtastning af master-password forbliver boksen låst, derefter vises en neutral fejlbesked.
+Efter 4 fejlede forsøg pålægges brugeren en midlertidig timeout. Efter timeout kan brugeren forsøge igen, og hver ny fejltastning udløser en ny timeout.
+
+
+Master-password sendes ikke over netværket.
+
+
+
+I: Independent : Uafhængig: Kræver at bruger har oprettet en profil.
+N: Negotiable:	Forhandlingsbar: Ja
+V: Valuable : Værdifuld: Ja
+E: Estimable:	Estimerbar: Ja
+S: Small: Lille: Ja
+T: Testable: Testbar: Ja
+
+
+US2:
+Som en bruger vil jeg kunne oprette en konto, så jeg kan få en profil.
+
+Acceptkriterier:
+Oprettelses formularen kræver en gyldig email, master-password og bekræftelse af master-password.
+Hvis emailen allerede er registreret vises en fejlbesked.
+Ved korrekt oprettelse vises en genoprettelsesnøgle, som brugeren bliver bedt om at gemme, og bekræfte at denne er blevet gemt.
+
+
+I: Ja
+N: Ja
+V: Ja, kunden får en bruger de kan bruge på flere enheder.
+E: Ja
+S: Ja
+T: Ja.
+
+
+
+
+
+
+
+
+US3:
+Som bruger vil jeg kunne gemme login detaljer i app'en, ved manuel indtastning.
+
+
+	Acceptkriterier:
+Et login-entry i boksen har felterne: platformnavn, URL, brugernavn/&e-email og adgangskode.
+Ved oprettelse af login-entry tjekkes platformnavn/URL mod allerede eksisterende login-entry for platformen med formålet om at finde kopier.
+Hvis det login-entry allerede findes i boksen, bliver bruger advaret herom og præsenteret med valgene ‘’Opdater’’, ‘’Gem som ny’’ eller "Annuller".
+Adgangskode feltet er som udgangspunkt ikke synligt for brugeren og sløres ved at vise ‘’******’’. Brugeren kan afsløre adgangskode midlertidigt med ‘’Afslørings-knap’’.
+
+I: Kræver oprettelse af profil
+N: Ja
+V: Ja, det er vores kernefunktionalitet
+E: Ja
+S: Ja
+T: Ja
+
+US4:
+Som bruger vil jeg nemt (1-3 klik) kunne gemme login detaljer i app'en, ved login til en platform med login-detaljer der ikke har været kendte for password manageren hidtil.
+
+
+	Acceptkriterier:
+Hvis bruger logger ind på en ny platform/URL, vil appen spørge bruger om det hidtil ukendte login-entry ønskes gemt.
+Hvis brugeren ønsker at gemme det nye login entry, vil appen auto-udfylde felterne for URL, brugernavn/email og password.
+Hvis brugeren logger ind på en kendt platform, med et kendt brugernavn/email, men ukendt adgangskode, bliver brugeren spurgt om adgangskoden for login-entryet skal opdateres.
+I:  Ja.
+N: Ja.
+V: Ja, sekundær kernefunktionalitet i vores app, der vil spare brugeren tid og indtastning
+E: Ja.
+S: Ja.
+T: Ja.
+

@@ -1,0 +1,243 @@
+User stories inkl. acceptkriterier
+
+
+
+US1:
+Som en bruger vil jeg kunne logind, så jeg kan tilgå min profil.
+
+	Acceptkriterier:
+Ved korrekt indtastning af master-password dekrypteres boksen lokalt.
+Ved forkert indtastning af master-password forbliver boksen låst, derefter vises en neutral fejlbesked.
+Efter 4 fejlede forsøg pålægges brugeren en midlertidig timeout. Efter timeout kan brugeren forsøge igen, og hver ny fejltastning udløser en ny timeout.
+
+
+Master-password sendes ikke over netværket.
+
+
+
+I: Independent : Uafhængig: Kræver at bruger har oprettet en profil.
+N: Negotiable:	Forhandlingsbar: Ja
+V: Valuable : Værdifuld: Ja
+E: Estimable:	Estimerbar: Ja
+S: Small: Lille: Ja
+T: Testable: Testbar: Ja
+
+
+US2:
+Som en bruger vil jeg kunne oprette en konto, så jeg kan få en profil.
+
+Acceptkriterier:
+Oprettelses formularen kræver en gyldig email, master-password og bekræftelse af master-password.
+Hvis emailen allerede er registreret vises en fejlbesked.
+Ved korrekt oprettelse vises en genoprettelsesnøgle, som brugeren bliver bedt om at gemme, og bekræfte at denne er blevet gemt.
+
+
+I: Ja
+N: Ja
+V: Ja, kunden får en bruger de kan bruge på flere enheder.
+E: Ja
+S: Ja
+T: Ja.
+
+
+
+
+
+
+
+
+US3:
+Som bruger vil jeg kunne gemme login detaljer i app'en, ved manuel indtastning.
+
+
+	Acceptkriterier:
+Et login-entry i boksen har felterne: platformnavn, URL, brugernavn/&e-email og adgangskode.
+Ved oprettelse af login-entry tjekkes platformnavn/URL mod allerede eksisterende login-entry for platformen med formålet om at finde kopier.
+Hvis det login-entry allerede findes i boksen, bliver bruger advaret herom og præsenteret med valgene ‘’Opdater’’, ‘’Gem som ny’’ eller "Annuller".
+Adgangskode feltet er som udgangspunkt ikke synligt for brugeren og sløres ved at vise ‘’******’’. Brugeren kan afsløre adgangskode midlertidigt med ‘’Afslørings-knap’’.
+
+I: Kræver oprettelse af profil
+N: Ja
+V: Ja, det er vores kernefunktionalitet
+E: Ja
+S: Ja
+T: Ja
+
+US4:
+Som bruger vil jeg nemt (1-3 klik) kunne gemme login detaljer i app'en, ved login til en platform med login-detaljer der ikke har været kendte for password manageren hidtil.
+
+
+	Acceptkriterier:
+Hvis bruger logger ind på en ny platform/URL, vil appen spørge bruger om det hidtil ukendte login-entry ønskes gemt.
+Hvis brugeren ønsker at gemme det nye login entry, vil appen auto-udfylde felterne for URL, brugernavn/email og password.
+Hvis brugeren logger ind på en kendt platform, med et kendt brugernavn/email, men ukendt adgangskode, bliver brugeren spurgt om adgangskoden for login-entryet skal opdateres.
+I:  Ja.
+N: Ja.
+V: Ja, sekundær kernefunktionalitet i vores app, der vil spare brugeren tid og indtastning
+E: Ja.
+S: Ja.
+T: Ja.
+
+
+
+
+
+
+
+
+US5:
+Som bruger vil jeg have mulighed for, at generere passwords, der vil opfylde de specifikke krav for password-format, på diverse platforme.
+
+
+	Acceptkriterier:
+Generatoren kan indstilles forskellige parametre: Adgangskode længde, case-sensitivity, tal og specialtegn.
+Den genererede adgangskode bliver verificeret af appen om specifikationen af parametrene er blevet overholdt, og derefter præsenteres for bruger med mulighed for at benytte passwordet eller generere et nyt.
+- Generering må højst tage 0.5 sek.
+I: Ja
+N: Ja.
+V: Ja, kernefunktionalitet for brugeren.
+E: Ja.
+S: Ja.
+T: Ja
+
+US6:
+Som bruger vil jeg have mulighed for at få overblik over alle mine gemte login detaljer.
+
+
+	Acceptkriterier:
+Oversigten viser flere login-entries samtidigt.
+Oversigten viser URL, platform, brugernavn/e-email og adgangskoden er sløret, med en ‘’Afsløring-knap’’ ved siden af.
+
+I: Kræver brugen har en profil og gemte login detaljer.
+N: Ja.
+V: Ja.
+E: Ja.
+S: Ja.
+T: Ja.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+US7:
+Som bruger vil jeg have mulighed for at søge mellem alle mine gemte login detaljer, ved at søge på brugernavn, e-mail eller URL, og derved kunne tilgå ønskede login detaljer.
+
+	Acceptkriterier:
+Søgningen sammenligner URL, platformnavn, brugernavn og e-email med gemte entries.
+
+
+I: Kræver gemte login oplysninger.
+N: Ja.
+V: Ja.
+E: Ja.
+S: Ja
+T: Ja
+
+
+
+
+
+
+
+
+US8:
+Som bruger vil jeg gerne kunne oprette og benytte 2FA sikring, med mulighed for tilknytning til i forvejen gemte login detaljer.
+
+	Acceptkriterier:
+En TOTP-Nøgle kan tilføjes ved manuel indtastning eller scanning af QR kode af TOTP-Seed.
+Der vises en nedtælling for skift til næste 2FA kode skift.
+En TOTP-Nøgle kan knyttes til et eksisterende login-entry, eller stå for sig selv med bruger-indstillet navn.
+Ved login til en kendt platform, der har en TOTP-Nøgle knyttet til login-entryet vises den aktuelle 2FA-kode for den specifikke nøgle for brugerne med mulighed for kopiering.
+I: Kræver bruger er oprettet
+N: Ja.
+V: Ja
+E: Nej.
+S: TBE
+T: Ja
+
+
+
+
+
+
+
+US9:
+Som bruger vil jeg have mulighed for at opdatere gemte passwords, i tilfælde af skiftet password.
+
+Acceptkriterier:
+Ved opdatering af et login-entrys password har brugeren mulighed for at autogenerere en ny adgangskode.
+Ved opdatering af login-entry password opdateres login-entryets historik for tidligere passwords.
+Ved opdatering af login-entry skal denne synkroniseres med serveren for at kunne tilgå det nye password på tværs af enheder.
+
+I: Kræver bruger er oprettet og har gemt passwords.
+N: Ja.
+V: Ja.
+E: Ja
+S: Ja
+T: Ja
+
+US10:
+Som bruger vil jeg gerne importere login detaljer fra andre password managers (f.x. Google Password Manager eller Bitwarden.)
+
+Acceptkriterier:
+Import understøtter CSV formatet som Google Password Manager og Bitwarden bruger.
+Ved import vises en oversigt med login-entryes og dubletter mellem i forvejen gemte login-entryes og de nyligt importeret login-entryes, samt uoverenstemmelser mellem kendte login-entryes brugernavn/email og tilhørende passwords.
+
+I: Kræver brugeren er oprettet.
+N: Ja.
+V: Ja. Er vigtigt hvis brugeren vil skifte fra en anden password manager.
+E: Ja.
+S: Ja.
+T: Ja.
+
+
+
+
+
+
+
+
+
+
+
+
+US11:
+Som bruger vil jeg gerne kunne genoprette adgang til password-manageren, i tilfælde af glemt master-password.
+
+Acceptkriterier:
+Med en gyldig genoprettelsesnøgle kan brugeren indstille et nyt masterpassword, og bevarer derfor adgang til alle sine gemte login-entryes.
+En genoprettelsesnøgle kan kun bruges en gang. Efter brug oprettes en ny genoprettelsesnøgle baseret på det nye master-password.
+
+
+I: Brugeren har været oprettet og gemt sin genoprettelsesnøgle.
+N: Ja.
+V: Ja.
+E:
+S: Ja
+T: Ja
+
+
+US12: maybe
+Som bruger vil jeg gerne have adgang til min data på tværs af enheder/operativsystemer.
+Ændringer synkroniseres automatisk med 60s mellemrum, derudover har brugeren mulighed for at synkronisere ændringer manuelt ved brug af en ‘’Synkroniserings knap’’.
+Ændringer uden netværksforbindelse gemmes lokalt og synkroniseres ved næste adgang til netværk.
+Modstridende ændringer af login-entry på tværs af enheder bliver præsenteret for brugeren ved synkronisering, og brugeren bliver bedt om at vælge hvilket data der skal synkroniseres.
+Data lagret på serveren er ikke i plaintext.
+Brugeren kan tilgå oversigt af enheder der har synkroniseret med boksen.
+Brugeren kan fjerne adgang fra specifikke enheder (?? Admin-enhed??).
+
+I:
+N:
+V:
+E:
+S:
+T:

@@ -1,0 +1,74 @@
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+
+::selection {
+  background: #000000;
+  text-shadow: none;
+}
+.center-img {
+  scale: 80% ;
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+.font-style1{
+  font-size: 120%;
+  font-family: "Arial Black";
+
+}
+.button-style1{
+
+
+
+  width: 100%;
+
+
+  text-align: center;
+
+  scale: 2;
+
+}
+
+.input-box{
+  background: #10182B;
+  border: 1px solid #4965AA;
+
+  line-height: 2;
+
+}
+
+.font-style2{
+  font-size: 70%;
+  font-family: "Arial";
+  color: #6C7FA8;
+
+}
+
+.center-text {
+
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.box1{
+color: #ffffff;
+  background: #0c1220;
+
+  margin-left: auto;
+  margin-right: auto;
+width: 300px;
+border: 5px solid #94aadf;
+padding: 50px;
+
+}

@@ -35,7 +35,7 @@
       Email
       <form>
         <div class="input-box">
-          <input type="text" id="email" name="email" class="input-box" size="40">
+          <input type="text" id="email" name="email" class="input-box" size="40" oninput="CheckInput">
 
         </div>
 
@@ -49,7 +49,7 @@
 
       <form>
         <div class="input-box">
-          <input type="text" id="mpass" name="mpass" class="input-box" size="40">
+          <input type="text" id="mpass" name="mpass" class="input-box" size="40" oninput="CheckInput">
 
         </div>
 
@@ -63,7 +63,7 @@
 
       <form>
         <div class="input-box">
-          <input type="text" id="cmpass" name="cmpass" class="input-box" size="40">
+          <input type="text" id="cmpass" name="cmpass" class="input-box" size="40" ">
 
         </div>
 
@@ -76,12 +76,52 @@
 
 
     <br>
-    <div class="button-style1">
-      <button type="submit">Register</button>
 
+    <div class="button-style1">
+
+
+      <form id = "confirm" action="ConfirmationCode1.html">
+      <button type="submit">Register </button>
+
+      </form>
     </div>
   </div>
 
+
+    <script>
+
+      function CheckInput() {
+
+
+        const email = document.getElementById('email').value;
+
+        const masterPassword = document.getElementById('mpass').value;
+        const confirmPass = document.getElementById('cmpass').value;
+
+
+        // Evaluate conditions and update the action URL dynamically
+        if (email === 99999999999) {
+
+          if (masterPassword === length > 10){
+
+            if (masterPassword.value === confirmPass.value){
+
+
+              form.getElementById("confirm").action = "ConfirmationCode1.html";
+
+            }
+          }
+        }
+
+
+
+
+      }
+CheckInput();
+      // Run once on load to establish initial action based on default selection
+
+
+    </script>
 
   </div>
 </div>

@@ -13,13 +13,6 @@
       let mpass = document.getElementById('mpass').value;
 
       let cmpass = document.getElementById('cmpass').value;
-
-
-
-let MyArray = email.split("");
-
-
-        if(email.form.va+lid.input){
           if (mpass === cmpass){
 
             document.getElementById("11").style.visibility='visible';
@@ -30,9 +23,7 @@ let MyArray = email.split("");
 
           }
 
-        } else {
-          i++;
-        }
+
 
 
 
@@ -72,7 +63,7 @@ let MyArray = email.split("");
       Email
       <form>
         <div class="input-box">
-          <input type="email" id="email" name="email" class="input-box" size="40" required>
+          <input type="email" id="email" name="email" class="input-box" size="40" required style="color: #94aadf">
 
         </div>
 
@@ -84,7 +75,12 @@ let MyArray = email.split("");
 
       <form>
         <div class="input-box">
-          <input type="text" id="mpass" name="mpass" class="input-box" size="40" >
+
+
+          <input type="text" id="mpass" name="mpass" class="input-box" size="40" style="color: #94aadf">
+
+
+
 
         </div>
 
@@ -98,7 +94,7 @@ let MyArray = email.split("");
 
       <form>
         <div class="input-box">
-          <input type="text" id="cmpass" name="cmpass" class="input-box" size="40" oninput="CheckInput()">
+          <input type="text" id="cmpass" name="cmpass" class="input-box" size="40" oninput="CheckInput()" style="color: #94aadf">
 
         </div>
 
@@ -114,10 +110,8 @@ let MyArray = email.split("");
 
     <div class="button-style1">
 
-
-      <button id = "11" onclick="CheckInput()" style='visibility: hidden' > Register </button>
-
-
+<form id ="confirm" action="ConfirmationCode1.html">
+      <button type="submit" id = "11" onclick="CheckInput()" style='visibility: hidden'  > Register </button>
 
       </form>
     </div>

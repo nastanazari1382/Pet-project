@@ -5,6 +5,7 @@ html {
 }
 
 
+
 ::selection {
   background: #000000;
   text-shadow: none;
@@ -20,6 +21,7 @@ html {
 
 
 .font-style1{
+  color: #b3d4fc;
   font-size: 120%;
   font-family: "Arial Black";
 
@@ -38,6 +40,7 @@ html {
 }
 
 .input-box{
+
   background: #10182B;
   border: 1px solid #4965AA;
 

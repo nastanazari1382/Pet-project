@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <link rel="stylesheet" href="css/Opretkonto.css">
+
+<script>
+  function ShowEmail(){
+
+    document.getElementById("RecKey").innerHTML = JSON.parse(localStorage.getItem("email"));
+
+
+  }
+
+
+</script>
+
+
 </head>
 
 <body style="background-color:#000000;">
@@ -35,7 +48,7 @@
         This key will only be shown once.
         <form>
           <div class="input-box">
-            <output type="text" id="email" name="email" class="input-box" size="40">
+            <output type="text" id="RecKey" name="Key" class="input-box" size="40" onmouseover="ShowEmail()">
             Recovery-Key-Example
           </div>
           <br>

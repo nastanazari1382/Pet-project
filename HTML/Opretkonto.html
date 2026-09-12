@@ -6,29 +6,105 @@
 
   <script>
 
+    function Hash(){
+
+      import(crypto);
+
+      const { createHmac } = require('node:crypto');
+
+      const secret = 'abcdefg';
+      const hash = createHmac('sha256', secret)
+        .update('I love cupcakes')
+        .digest('hex');
+      console.log(hash);
+
+
+    }
+
+
+    function SavePassword(){
+
+      import(crypto);
+
+      const mpass = document.getElementById('mpass').value;
+
+
+
+      const {createHash} = require('node:crypto');
+
+      const crypto = require('node:crypto');
+
+      const { Buffer } = require('node:buffer');
+
+
+
+
+      const string = "node"
+
+      crypto.hash('sha1', string);
+
+
+      const base64 = 'Tm9kZS5qcw==';
+
+      const hashedpass = crypto.hash('sha1', Buffer.from(base64, 'base64'), "buffer");
+
+
+
+
+      const mpassJSON = JSON.stringify(hashedpass.digest());
+
+      //
+
+      localStorage.setItem("pass", mpassJSON)
+
+    }
+
+
+    function SaveEmail(){
+
+      let email = JSON.stringify(document.getElementById('email').value);
+
+      localStorage.setItem("email",email)
+
+      const JSONemail = JSON.parse(localStorage.getItem("email"));
+
+      console.log(JSONemail);
+    }
+
+
     function CheckInput() {
 
-      let email = document.getElementById('email').value;
 
       let mpass = document.getElementById('mpass').value;
 
       let cmpass = document.getElementById('cmpass').value;
-          if (mpass === cmpass){
 
-            document.getElementById("11").style.visibility='visible';
-          } else {
+      let email = document.getElementById('email').value;
+
+      let emailPart = email.match(/.{1}/g);
+
+      console.log(emailPart);
 
 
-            document.getElementById("11").style.visibility='hidden';
+        for(var n=0; emailPart[n]; n++ ){
+          if (emailPart[n] === "@"){
+            if (mpass === cmpass){
+
+              document.getElementById("11").style.visibility='visible';
+              SaveEmail();
+              SavePassword();
+
+            } else {
+
+              document.getElementById("11").style.visibility='hidden';
+
+            }
+
 
           }
-
-
-
-
-
-
+        }
     }
+
 
   </script>
   <meta charset="UTF-8">
@@ -77,7 +153,7 @@
         <div class="input-box">
 
 
-          <input type="text" id="mpass" name="mpass" class="input-box" size="40" style="color: #94aadf">
+          <input type="text" id="mpass" name="mpass" class="input-box" size="40" style="color: #94aadf" onpointerover="Hash()">
 
 
 
@@ -111,7 +187,7 @@
     <div class="button-style1">
 
 <form id ="confirm" action="ConfirmationCode1.html">
-      <button type="submit" id = "11" onclick="CheckInput()" style='visibility: hidden'  > Register </button>
+      <button type="submit" id = "11" onsubmit="SaveEmail()" style='visibility: hidden'  > Register </button>
 
       </form>
     </div>

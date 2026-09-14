@@ -8,52 +8,16 @@
 
     function Hash(){
 
-      import(crypto);
-
-      const { createHmac } = require('node:crypto');
-
-      const secret = 'abcdefg';
-      const hash = createHmac('sha256', secret)
-        .update('I love cupcakes')
-        .digest('hex');
-      console.log(hash);
-
-
     }
 
 
     function SavePassword(){
 
-      import(crypto);
 
       const mpass = document.getElementById('mpass').value;
 
+      const mpassJSON = JSON.stringify(mpass);
 
-
-      const {createHash} = require('node:crypto');
-
-      const crypto = require('node:crypto');
-
-      const { Buffer } = require('node:buffer');
-
-
-
-
-      const string = "node"
-
-      crypto.hash('sha1', string);
-
-
-      const base64 = 'Tm9kZS5qcw==';
-
-      const hashedpass = crypto.hash('sha1', Buffer.from(base64, 'base64'), "buffer");
-
-
-
-
-      const mpassJSON = JSON.stringify(hashedpass.digest());
-
-      //
 
       localStorage.setItem("pass", mpassJSON)
 
@@ -153,7 +117,7 @@
         <div class="input-box">
 
 
-          <input type="text" id="mpass" name="mpass" class="input-box" size="40" style="color: #94aadf" onpointerover="Hash()">
+          <input type="password" id="mpass" name="mpass" class="input-box" size="40" style="color: #94aadf" onpointerover="Hash()">
 
 
 
@@ -170,7 +134,7 @@
 
       <form>
         <div class="input-box">
-          <input type="text" id="cmpass" name="cmpass" class="input-box" size="40" oninput="CheckInput()" style="color: #94aadf">
+          <input type="password" id="cmpass" name="cmpass" class="input-box" size="40" oninput="CheckInput()" style="color: #94aadf">
 
         </div>
 

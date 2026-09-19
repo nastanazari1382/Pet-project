@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Opretkonto.css">
+
+    <script>
+        function ShowEmail(){
+
+        document.getElementById("RecKey").innerHTML = JSON.parse(localStorage.getItem("email"));
+
+        }
+    </script>
+
+</head>
+
+<body style="background-color: #000000;">
+<header>
+    <div class="center-img">
+        <img src="logo.png" alt="Keyspiracy logo" class="center-img">
+        <hr>
+    </div>
+</header>
+
+
+<div class="center-text">
+    <div class="font-style1">
+        <div class="box1">
+            Login
+            <div class="center-text">
+
+              <div class="font-style1">
+
+                  <hr>
+                  <br>
+                  <form id="confirm" action="/login" method="post">
+                      <div class="font-style2">
+                          Email
+                          <div class="input-box">
+                              <input type="email" id="email" name="logemail" class="input-box" size="40"
+                                     th:value=" ${username}" required style="color: #94aadf">
+
+                          </div>
+                          <br>
+                          <br>
+                          <br>
+
+                          <div class="button-style1">
+                              <button type="submit"> Continue</button>
+                          </div>
+                      </div>
+
+                      <br>
+                  </form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

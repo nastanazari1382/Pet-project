@@ -53,7 +53,6 @@ public class main {
 
                 userService.createUser(email,password);
 
-                ctx.sessionAttribute("email", email);
 
 
                 ctx.redirect("/login");
@@ -69,10 +68,11 @@ public class main {
             config.routes.post("/login", ctx -> {
 
 
-                String email = ctx.formParam("logemail");
+                String email = ctx.formParam("loginEmail");
+                String password = ctx.formParam("loginPass");
 
 
-                if(userService.login(email,"0000") != null){
+                if(userService.login(email,password) != null){
                     ctx.redirect("/welcome");
                 } else {
                     ctx.redirect("/login");

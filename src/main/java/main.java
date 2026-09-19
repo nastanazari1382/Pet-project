@@ -26,7 +26,7 @@ public class main {
 
 
 
-        var app = Javalin.create(config -> {
+        Javalin app = Javalin.create(config -> {
 
             config.staticFiles.add("/public");
 
@@ -34,9 +34,7 @@ public class main {
 
 
 
-            config.routes.get("/", ctx -> ctx.result("Hej verden"));
-
-            config.routes.get("/hello", ctx -> ctx.result("hello"));
+            config.routes.get("/", ctx -> ctx.redirect("/register"));
 
 
             config.routes.get("/register", ctx -> {

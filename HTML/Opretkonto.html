@@ -6,11 +6,6 @@
 
   <script>
 
-    function Hash(){
-
-    }
-
-
     function SavePassword(){
 
 
@@ -19,7 +14,7 @@
       const mpassJSON = JSON.stringify(mpass);
 
 
-      localStorage.setItem("pass", mpassJSON)
+      localStorage.setItem("pass", mpassJSON);
 
     }
 
@@ -32,7 +27,7 @@
 
       const JSONemail = JSON.parse(localStorage.getItem("email"));
 
-      console.log(JSONemail);
+
     }
 
 
@@ -47,7 +42,6 @@
 
       let emailPart = email.match(/.{1}/g);
 
-      console.log(emailPart);
 
 
         for(var n=0; emailPart[n]; n++ ){

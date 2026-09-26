@@ -6,10 +6,10 @@ import factories.UserFactory;
 import java.util.List;
 
 public class UserService {
-    private UserFactory userFactory;
+    private UserFactory userFactory = new UserFactory();
 
-    public UserService(UserFactory userFactory){
-        this.userFactory = userFactory;
+    public UserService(){
+
 
     }
 
@@ -38,11 +38,15 @@ public class UserService {
         return null;
     }
 
+
+
+
     public User createUser(String username, String password){
 
             if(getUser(username) == null){
-                userFactory.createUser(username,password);
-                return getUser(username);
+                User user = new User(username,password);
+                userFactory.users.add(user);
+                return user;
             }
         return null;
     }

@@ -37,9 +37,15 @@
                 <br>
                 <br>
                 This key will only be shown once
+
+
+
+                <h1 th:text="${session.user.username}"> email </h1>
+
                 <form>
-                  <h1 th:text="${password}"> Navn </h1>
+
                     <div class="input-box">
+
                         <output type="text" id="RecKey" name="Key" class="input-box" size="40" onmouseover="ShowEmail()">
 
                             Recovery-Key-Example

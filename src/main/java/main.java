@@ -1,85 +1,27 @@
 import controllers.UserController;
+import configuration.ThymeleafConfig;
 import entities.User;
-import factories.UserFactory;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import services.UserService;
+
+
 
 public class main {
 
     public static void main(String[] args) {
 
-        UserFactory userFactory= new UserFactory();
-        UserService userService = new UserService(userFactory);
+
+        UserService userService = new UserService();
+        UserController.setUserService(userService);
 
 
         Javalin app = Javalin.create(config -> {
+            UserController.setRoutes(config);
 
             config.staticFiles.add("/public");
 
-            config.fileRenderer(new JavalinThymeleaf());
-
-
-
-            config.routes.get("/", ctx -> ctx.redirect("/register"));
-
-
-            config.routes.get("/register", ctx -> {
-                ctx.render("templates/register.html");
-
-            });
-
-            config.routes.post("/register", ctx -> {
-
-
-                String email = ctx.formParam("email");
-                String password = ctx.formParam("mpass");
-
-
-                userService.createUser(email,password);
-
-
-
-                ctx.redirect("/login");
-
-            });
-
-            config.routes.get("/login", ctx -> {
-
-                ctx.render("templates/login.html");
-            });
-
-
-            config.routes.post("/login",
-                    ctx -> UserController.login(ctx, userService));
-
-     /*       config.routes.post("/login", ctx -> {
-
-
-                String email = ctx.formParam("loginEmail");
-                String password = ctx.formParam("loginPass");
-
-
-                if(userService.login(email,password) != null){
-                    ctx.redirect("/welcome");
-                } else {
-                    ctx.redirect("/login");
-                }
-
-            });
-*/
-
-            config.routes.get("/welcome", ctx -> {
-                ctx.render("templates/welcome.html");
-            });
-
-
-        /*    config.routes.post("/welcome", ctx -> {
-                ctx.redirect("/welcome");
-            });
-
-*/
-
+            config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
 
         }).start(7070);
 

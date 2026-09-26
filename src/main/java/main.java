@@ -1,3 +1,4 @@
+import controllers.UserController;
 import entities.User;
 import factories.UserFactory;
 import io.javalin.Javalin;
@@ -10,20 +11,6 @@ public class main {
 
         UserFactory userFactory= new UserFactory();
         UserService userService = new UserService(userFactory);
-
-
-
-        userService.add10();
-        System.out.println(userFactory.getUsers());
-        System.out.println(userService.getUser("Bowen"));
-
-
-        System.out.println(userService.login("peter","43214"));
-        System.out.println(userService.login("peter","33333"));
-
-
-        System.out.println(userService.createUser("peter1","44444"));
-
 
 
         Javalin app = Javalin.create(config -> {
@@ -63,7 +50,10 @@ public class main {
             });
 
 
-            config.routes.post("/login", ctx -> {
+            config.routes.post("/login",
+                    ctx -> UserController.login(ctx, userService));
+
+     /*       config.routes.post("/login", ctx -> {
 
 
                 String email = ctx.formParam("loginEmail");
@@ -76,21 +66,19 @@ public class main {
                     ctx.redirect("/login");
                 }
 
-
-
             });
-
+*/
 
             config.routes.get("/welcome", ctx -> {
                 ctx.render("templates/welcome.html");
             });
 
 
-            config.routes.post("/welcome", ctx -> {
+        /*    config.routes.post("/welcome", ctx -> {
                 ctx.redirect("/welcome");
             });
 
-
+*/
 
 
         }).start(7070);

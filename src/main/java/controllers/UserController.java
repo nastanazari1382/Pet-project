@@ -9,13 +9,20 @@ public class UserController {
 
 
 
-        String username = ctx.formParam("email");
-        String password = ctx.formParam("mpass");
+
+        String email = ctx.formParam("loginEmail");
+        String password = ctx.formParam("loginPass");
 
 
-        // hent data fra request
-        // kald service
-        // send response
+        if(userService.login(email,password) != null){
+            ctx.redirect("/welcome");
+        } else {
+            ctx.redirect("/login");
+        }
+
+
+
     }
+
 
 }

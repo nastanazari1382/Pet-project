@@ -13,14 +13,7 @@ public class UserService {
 
     }
 
-    public void addUser(User user){
 
-        userFactory.create10();
-    }
-
-    public void add10(){
-        userFactory.create10();
-    }
 
 
     public User getUser(String username){

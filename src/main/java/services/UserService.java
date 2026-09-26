@@ -1,6 +1,7 @@
 package services;
 
 import entities.User;
+import exceptions.IllegalUserDataException;
 import factories.UserFactory;
 
 import java.util.List;
@@ -41,7 +42,13 @@ public class UserService {
 
 
 
-    public User createUser(String username, String password){
+    public User createUser(String username, String password) throws IllegalUserDataException {
+        try{
+        if(username == null || username.isBlank() || password.isBlank() || validatePassword(password)==false){
+              throw new IllegalUserDataException("Illegal data!!");
+            }} catch (IllegalUserDataException e){
+            System.out.println("fejl!!");
+        }
 
             if(getUser(username) == null){
                 User user = new User(username,password);
@@ -50,7 +57,7 @@ public class UserService {
             }
         return null;
     }
-    public boolean validatePassword(String username, String password){
+    public boolean validatePassword(String password){
         if (password.length()  >= 8 && password.length() <= 16) {
             return true;
         }

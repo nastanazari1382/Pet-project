@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.User;
+import exceptions.IllegalUserDataException;
 import io.javalin.config.JavalinConfig;
 import io.javalin.http.Context;
 import services.UserService;
@@ -32,15 +33,18 @@ public class UserController {
     public static void setUserService(UserService service) {
         userService = service;
     }
-    public static void createUser(Context ctx){
+    public static void createUser(Context ctx) throws IllegalUserDataException {
+
         String email = ctx.formParam("email");
         String password = ctx.formParam("mpass");
 
         User user = userService.createUser(email, password);
+
         if (user != null) {
             ctx.sessionAttribute("user", user);
             ctx.redirect("/login");
         } else {
+            ctx.status(404);
             ctx.redirect("/register");
         }
 

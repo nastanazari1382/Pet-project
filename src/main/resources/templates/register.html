@@ -9,10 +9,8 @@
             const mpassJSON = JSON.stringify(mpass);
             localStorage.setItem("pass", mpassJSON);
         }
-        function SaveEmail() {
-            let email= JSON.stringify(document.getElementById('email').value);
-            localStorage.setItem("email", email)
-            const JSONemail = JSON.parse(localStorage.getItem("email"));
+        function CheckInputAgain() {
+
         }
         function CheckInput(){
             const email = document.getElementById('email').value;
@@ -74,7 +72,7 @@
                 <br>
 
                 <div class="button-style1">
-                    <button type="submit" style='visibility: hidden' id="11" onsubmit="SaveEmail()"> Register </button>
+                    <button type="submit" style='visibility: hidden' id="11" onclick="CheckInputAgain()"> Register </button>
                 </div>
             </div>
         </form>

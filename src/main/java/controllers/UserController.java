@@ -6,6 +6,8 @@ import io.javalin.config.JavalinConfig;
 import io.javalin.http.Context;
 import services.UserService;
 
+import java.util.Objects;
+
 public class UserController {
     private static UserService userService = new UserService();
 
@@ -37,15 +39,22 @@ public class UserController {
 
         String email = ctx.formParam("email");
         String password = ctx.formParam("mpass");
+        String cmpass = ctx.formParam("cmpass");
 
-        User user = userService.createUser(email, password);
+        User user = userService.getUser(email);
 
-        if (user != null) {
-            ctx.sessionAttribute("user", user);
-            ctx.redirect("/login");
+        if (!userService.validatePassword(password)) {
+            ctx.attribute("error", "Password must be between 8 and 16 characters");
+            ctx.render("templates/register");
         } else {
-            ctx.status(404);
-            ctx.redirect("/register");
+            if(user==null){
+                userService.createUser(email, password);
+                ctx.redirect("/login");
+            } else {
+                ctx.attribute("error", "User already exists");
+                ctx.render("templates/register");
+            }
+
         }
 
     }
@@ -60,7 +69,8 @@ public class UserController {
             ctx.sessionAttribute("user", user);
             ctx.redirect("/welcome");
         } else {
-            ctx.redirect("/login");
+            ctx.attribute("error", "Invalid email or password");
+            ctx.render("templates/login");
         }
     }
 }

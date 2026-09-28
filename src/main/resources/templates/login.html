@@ -12,6 +12,14 @@
         document.getElementById("RecKey").innerHTML = JSON.parse(localStorage.getItem("email"));
 
         }
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("loginpass");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
     </script>
 
 </head>
@@ -43,15 +51,16 @@
                           Email
                           <div class="input-box">
                               <input type="email" id="email" name="loginEmail" class="input-box" size="40"
-                                     th:value=" ${username}" required style="color: #94aadf">
+                                      required style="color: #94aadf">
 
                           </div>
                           <br>
 
                           Password
                           <input type="password" id="loginpass" name="loginPass" class="input-box" size="40"
-                                 th:value=" ${username}" required style="color: #94aadf">
-
+                                  required style="color: #94aadf">
+                          <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Show password
+                          <h1 th:text="${error}">  </h1>
                           <br>
                           <br>
                           <br>

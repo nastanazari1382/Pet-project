@@ -49,7 +49,6 @@ public class UserService {
             }} catch (IllegalUserDataException e){
             System.out.println("fejl!!");
         }
-
             if(getUser(username) == null){
                 User user = new User(username,password);
                 userFactory.users.add(user);

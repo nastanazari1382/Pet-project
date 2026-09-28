@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="Opretkonto.css">
 
     <script>
-        function ShowEmail(){
 
-        document.getElementById("RecKey").innerHTML = JSON.parse(localStorage.getItem("email"));
-
-        }
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById("loginpass");
             if (passwordInput.type === "password") {
@@ -59,12 +55,15 @@
                           Password
                           <input type="password" id="loginpass" name="loginPass" class="input-box" size="40"
                                   required style="color: #94aadf">
+                          <br>
+                          <br>
                           <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Show password
-                          <h1 th:text="${error}">  </h1>
                           <br>
                           <br>
+                          <footer th:text="${error}" style="color: #ff0000" ></footer>
+
                           <br>
-                          <br>
+
 
                           <div class="button-style1">
                               <button type="submit"> Continue</button>
@@ -73,6 +72,10 @@
 
                       <br>
                   </form>
+                  <div class="button-style1">
+                      <form action="/register" method="get"> <button type="submit" style="scale: 70% "> Register new account </button> </form>
+                  </div>
+
               </div>
               </div>
             </div>

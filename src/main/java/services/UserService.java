@@ -4,7 +4,7 @@ import entities.User;
 import exceptions.IllegalUserDataException;
 import factories.UserFactory;
 
-import java.util.List;
+
 
 public class UserService {
     private UserFactory userFactory = new UserFactory();
@@ -13,8 +13,6 @@ public class UserService {
 
 
     }
-
-
 
 
     public User getUser(String username){
@@ -42,12 +40,11 @@ public class UserService {
 
 
 
-    public User createUser(String username, String password) throws IllegalUserDataException {
-        try{
+    public User createUser(String username, String password) {
+
         if(username == null || username.isBlank() || password.isBlank() || validatePassword(password)==false){
-              throw new IllegalUserDataException("Illegal data!!");
-            }} catch (IllegalUserDataException e){
             System.out.println("fejl!!");
+
         }
             if(getUser(username) == null){
                 User user = new User(username,password);

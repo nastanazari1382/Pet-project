@@ -6,7 +6,7 @@ import io.javalin.config.JavalinConfig;
 import io.javalin.http.Context;
 import services.UserService;
 
-import java.util.Objects;
+
 
 public class UserController {
     private static UserService userService = new UserService();
@@ -14,17 +14,17 @@ public class UserController {
     public static void setRoutes(JavalinConfig config){
 
         config.routes.get("/", ctx -> ctx.redirect("/register"));
-        config.routes.get("/register", ctx -> ctx.render("templates/register.html"));
+        config.routes.get("/register", ctx -> ctx.render("register"));
         config.routes.post("/register", ctx -> createUser(ctx));
 
-        config.routes.get("/login", ctx -> ctx.render("templates/login.html"));
+        config.routes.get("/login", ctx -> ctx.render("login"));
         config.routes.post("/login", ctx -> UserController.login(ctx));
 
 
         config.routes.get("/welcome", ctx -> {
             User user = ctx.sessionAttribute("user");
             if (user != null) {
-                ctx.render("templates/welcome.html");
+                ctx.render("welcome");
             } else {
                 ctx.redirect("/login");
             }
@@ -32,10 +32,8 @@ public class UserController {
 
     }
 
-    public static void setUserService(UserService service) {
-        userService = service;
-    }
-    public static void createUser(Context ctx) throws IllegalUserDataException {
+
+    public static void createUser(Context ctx){
 
         String email = ctx.formParam("email");
         String password = ctx.formParam("mpass");
@@ -45,14 +43,14 @@ public class UserController {
 
         if (!userService.validatePassword(password)) {
             ctx.attribute("error", "Password must be between 8 and 16 characters");
-            ctx.render("templates/register");
+            ctx.render("register");
         } else {
             if(user==null){
                 userService.createUser(email, password);
                 ctx.redirect("/login");
             } else {
                 ctx.attribute("error", "User already exists");
-                ctx.render("templates/register");
+                ctx.render("register");
             }
 
         }
@@ -70,7 +68,7 @@ public class UserController {
             ctx.redirect("/welcome");
         } else {
             ctx.attribute("error", "Invalid email or password");
-            ctx.render("templates/login");
+            ctx.render("login");
         }
     }
 }

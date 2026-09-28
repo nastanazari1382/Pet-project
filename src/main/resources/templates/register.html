@@ -26,6 +26,10 @@
                 document.getElementById("11").style.visibility = 'hidden';
             }
         }
+        function login(){
+
+
+        }
     </script>
 
     <meta charset="UTF-8">
@@ -51,13 +55,13 @@
             <div class="font-style2">
                 Email
                 <div class="input-box">
-                    <input type="email" id="email" name="email" class="input-box" size="40" oninput="CheckInput()" required style="color: #94aadf">
+                    <input type="email" id="email" name="email" class="input-box" size="40" oninput="CheckInput()"  style="color: #94aadf">
                 </div>
                 <br>
                 <div class="font-style2">
                     Master-password
                     <div class="input-box">
-                        <input type="password" id="mpass" name="mpass" class="input-box" size="40" oninput="CheckInput()" required style="color: #94aadf">
+                        <input type="password" id="mpass" name="mpass" class="input-box" size="40" oninput="CheckInput()" style="color: #94aadf">
                     </div>
                     <br>
                     <div class="font-style2">
@@ -66,21 +70,29 @@
                 </div>
 
                 <div class="input-box">
-                   <input type="password" id="cmpass" name="cmpass" class="input-box" size="40" oninput="CheckInput()" required style="color: #94aadf">
+                   <input type="password" id="cmpass" name="cmpass" class="input-box" size="40" oninput="CheckInput()" style="color: #94aadf">
                 </div>
                 <br>
 <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Show password
                 <br>
-                <h1 th:text="${error}">  </h1>
+
+                <footer th:text="${error}" style="color: #ff0000" ></footer>
+
+                <br>
                 Efter oprettelse vises en genoprettelsesnøgle, som skal gemmes og bekræftes.
                 <br>
                 <br>
 
                 <div class="button-style1">
-                    <button type="submit" style='visibility: hidden' id="11" onclick="CheckInputAgain()"> Register </button>
+                    <button type="submit" style='visibility: hidden' id="11"> Register </button>
                 </div>
             </div>
         </form>
+            <br>
+
+            <div class="button-style1">
+            <form action="/login" method="get"> <button type="submit" style="scale: 70% "> Login </button> </form>
+            </div>
     </div>
 </div>
 </div>

@@ -7,7 +7,6 @@ import io.javalin.http.Context;
 import services.UserService;
 
 
-
 public class UserController {
     private static UserService userService = new UserService();
 

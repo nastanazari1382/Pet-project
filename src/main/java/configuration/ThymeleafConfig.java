@@ -3,6 +3,7 @@ package configuration;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+
 public class ThymeleafConfig {
 
     public static TemplateEngine templateEngine() {
@@ -18,5 +19,6 @@ public class ThymeleafConfig {
         templateEngine.setTemplateResolver(templateResolver);
 
         return templateEngine;
+
     }
 }

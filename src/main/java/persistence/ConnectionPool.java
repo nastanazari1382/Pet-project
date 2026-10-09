@@ -12,7 +12,7 @@ public class ConnectionPool {
     private static volatile ConnectionPool instance = null;
     private static HikariDataSource ds;
 
-    private ConnectionPool() {
+    public ConnectionPool() {
     }
 
     public static ConnectionPool getInstance(String user, String password, String url, String db) {

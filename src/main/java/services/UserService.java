@@ -1,14 +1,27 @@
 package services;
 
 import entities.User;
+import exceptions.DatabaseException;
 import exceptions.IllegalUserDataException;
 import factories.UserFactory;
+import org.postgresql.jdbc.UUIDArrayAssistant;
+import persistence.ConnectionPool;
+import persistence.UserMapper;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 public class UserService {
     private UserFactory userFactory = new UserFactory();
+    String user="postgres"  ;
+    String password= "postgres";
+    String url ="jdbc:postgresql://localhost:5432/keyspiracy2";
+    String db = "keyspiracy2";
+    //ConnectionPool.getInstance(user,password,url,db);
+    ConnectionPool connectionPool;
 
+    public UserMapper userMapper = new UserMapper(ConnectionPool.getInstance(user,password,url,db));
     public UserService(){
 
 
@@ -42,7 +55,7 @@ public class UserService {
 
 
 
-    public User createUser(String username, String password) throws IllegalUserDataException {
+    public User createUser(String username, String password) throws IllegalUserDataException, DatabaseException, SQLException {
         try{
         if(username == null || username.isBlank() || password.isBlank() || validatePassword(password)==false){
               throw new IllegalUserDataException("Illegal data!!");
@@ -50,9 +63,23 @@ public class UserService {
             System.out.println("fejl!!");
         }
 
-            if(getUser(username) == null){
-                User user = new User(username,password);
+            if(getUser(username) == null && userMapper.getUserByUserName(username)==null){
+
+                String displayname = username;
+
+
+                String id = String.valueOf(UUID.randomUUID());
+
+
+                User user = new User(username,password,displayname,id);
+
+
+
+                userMapper.createUser(user);
+
                 userFactory.users.add(user);
+
+
                 return user;
             }
         return null;
